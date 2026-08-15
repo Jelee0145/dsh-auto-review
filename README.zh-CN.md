@@ -1,4 +1,4 @@
-# DSH Auto-Review
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e3a68a64-709c-481b-8d4c-4cbb2ada155b" /># DSH Auto-Review
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
@@ -83,12 +83,12 @@ dsh web
 
 把下面这段直接复制给任意 coding agent（Codex、Claude Code、DSH agent 等）：
 
-> 请阅读 https://github.com/Jelee0145/dsh-auto-review/edit/main/README.zh-CN.md 安装 DSH Auto-Review。先检查我当前安装的 DSH 版本是否受支持，再使用仓库提供的安装脚本应用所需的 isolate compatibility patch 并安装 Auto-Review。不要修改 README 未要求的其他 DSH 代码，不要使用弱化的隔离 fallback。安装完成后运行项目提供的 doctor/验证步骤，并告诉我实际修改了哪些文件以及验证结果。如果版本或文件校验不匹配，请停止并告诉我原因，不要强行 patch。
+> 请阅读https://github.com/Jelee0145/dsh-auto-review/blob/main/README.md安装 DSH Auto-Review。先检查我当前安装的 DSH 版本是否受支持，再使用仓库提供的安装脚本应用所需的 isolate compatibility patch 并安装 Auto-Review。不要修改 README 未要求的其他 DSH 代码，不要使用弱化的隔离 fallback。安装完成后运行项目提供的 doctor/验证步骤，并告诉我实际修改了哪些文件以及验证结果。如果版本或文件校验不匹配，请停止并告诉我原因，不要强行 patch。
 
 <details>
 <summary>English（语义一致）</summary>
 
-> Follow https://github.com/Jelee0145/dsh-auto-review/edit/main/README.zh-CN.md to install DSH Auto-Review. First check whether my installed DSH version is supported, then use the repository's installer to apply the required isolate compatibility patch and install Auto-Review. Do not modify DSH code beyond what the README requires, and do not use a weakened isolation fallback. After installing, run the project's doctor/verification steps and tell me which files were actually modified and what the results were. If the version or file checks do not match, stop and tell me why — do not force the patch.
+> Follow https://github.com/Jelee0145/dsh-auto-review/blob/main/README.md to install DSH Auto-Review. First check whether my installed DSH version is supported, then use the repository's installer to apply the required isolate compatibility patch and install Auto-Review. Do not modify DSH code beyond what the README requires, and do not use a weakened isolation fallback. After installing, run the project's doctor/verification steps and tell me which files were actually modified and what the results were. If the version or file checks do not match, stop and tell me why — do not force the patch.
 
 </details>
 
