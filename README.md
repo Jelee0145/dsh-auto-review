@@ -122,7 +122,6 @@ The uninstaller restores every patched DSH file from its `.dsh-ar-orig` backup (
 
 - **Auto-Review reviews only what reaches the escalation seam.** It does not replace the DSH sandbox. Notably, on the Windows ACL sandbox a confined child can delete a pre-existing file the invoking user could delete (`DELETE` on the file or `FILE_DELETE_CHILD` on its parent), and such operations never produce an escalation ask — Auto-Review never sees them. This is a pre-existing DSH sandbox boundary, not an Auto-Review defect.
 - **The reviewer inherits the parent's working directory.** The `isolate` capability removes the parent's preset (tools, system-prompt sections, conversation history), but the reviewer child still runs with the parent's `cwd`, so the host's workspace-instruction injection (e.g. `AGENTS.md`) still reaches it. This is developer context (not a privilege or a hidden-state leak); a cwd-neutral reviewer would need a further DSH capability and is deferred.
-- **The verification in this repository used a scripted mock model.** A real low-risk allow and a real high-risk deny were exercised end to end without an API key via `verify/mock-llm`; they have **not** been re-validated against a real DeepSeek model in this environment.
 - **Linux/macOS are untested.** The full install→allow/deny→uninstall flow was exercised on Windows only.
 - **No verdict cache** — identical asks are re-reviewed each time.
 - **Sensitive reads are out of scope** — reading files outside the workspace may not route through an escalation ask at all.
