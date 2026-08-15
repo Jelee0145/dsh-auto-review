@@ -1,0 +1,157 @@
+{
+  "dshVersion": "0.1.0-rc.6",
+  "generatedAt": "2026-08-15T14:05:40.964Z",
+  "features": [
+    "subagent isolate capability",
+    "approval policy 'auto-review' vocabulary",
+    "escalation arguments seam (validated call arguments reach approval requesters)"
+  ],
+  "files": [
+    {
+      "path": "node_modules/@deepseek-ai/dsh-subagent/lib/index.js",
+      "feature": "subagent isolate capability",
+      "edits": [
+        {
+          "find": "\tchildCtx.get(\"agentPresets\")?.composeFrom(childCtx, parent.ctx);",
+          "replace": "\tif (composition.isolate !== true) childCtx.get(\"agentPresets\")?.composeFrom(childCtx, parent.ctx);"
+        }
+      ],
+      "shaBefore": "510aba14f13d1a9deccf3d81d790be3e7ebcdc4797fcfa584908350d07c529c6",
+      "shaAfter": "b66420df6a2e1486effe6fd707b42a9c31c8ee5c21f48dd2ab5f50a676d86fc2",
+      "bytesBefore": 111285,
+      "bytesAfter": 111319
+    },
+    {
+      "path": "node_modules/@deepseek-ai/dsh-subagent-in-process-driver/lib/index.js",
+      "feature": "subagent isolate capability",
+      "edits": [
+        {
+          "find": "\t\t\ttoolFilter: request.toolFilter\n\t\t});",
+          "replace": "\t\t\ttoolFilter: request.toolFilter,\n\t\t\tisolate: request.isolate\n\t\t});"
+        }
+      ],
+      "shaBefore": "1d1507c653de737bf9a51a19834dacb59bf42c2175bcccd443f42901885ff34b",
+      "shaAfter": "39b56a949f7ecd1d299d573ec681f693f30575a3bfbe905f1c57ec40eb631c58",
+      "bytesBefore": 10314,
+      "bytesAfter": 10343
+    },
+    {
+      "path": "node_modules/@deepseek-ai/dsh-subagent-spawn-in-process/lib/index.js",
+      "feature": "subagent isolate capability",
+      "edits": [
+        {
+          "find": "\t\tpersona: true\n\t};",
+          "replace": "\t\tpersona: true,\n\t\tisolate: true\n\t};"
+        }
+      ],
+      "shaBefore": "1dde2018b8f87f37800c2f2f86ea5f0b40773d0f22471d685f3615275b0f6af1",
+      "shaAfter": "6dd5a0004b03924952faf623f412ae9a2c7599728df1dca3a5a87bf4849857d3",
+      "bytesBefore": 1505,
+      "bytesAfter": 1522
+    },
+    {
+      "path": "node_modules/@deepseek-ai/dsh-subagent-fork-in-process/lib/index.js",
+      "feature": "subagent isolate capability",
+      "edits": [
+        {
+          "find": "\t\tpersona: true\n\t};",
+          "replace": "\t\tpersona: true,\n\t\tisolate: true\n\t};"
+        }
+      ],
+      "shaBefore": "e2848671d4af4ea161bdac8a9f1f15d6762586c141b7b1ff69432fad86200e7e",
+      "shaAfter": "ed82ed1b67bf1c8c7c87250e39a228338f5dee9cd8d9655a5e169d2830030e76",
+      "bytesBefore": 2336,
+      "bytesAfter": 2353
+    },
+    {
+      "path": "node_modules/@deepseek-ai/dsh-user-approval/lib/index.js",
+      "feature": "approval policy 'auto-review' vocabulary",
+      "edits": [
+        {
+          "find": "const APPROVAL_POLICIES = [\"ask\", \"never\"];",
+          "replace": "const APPROVAL_POLICIES = [\"ask\", \"never\", \"auto-review\"];"
+        },
+        {
+          "find": "z.union([\"ask\", \"never\"]).default(\"ask\")",
+          "replace": "z.union([\"ask\", \"never\", \"auto-review\"]).default(\"ask\")"
+        }
+      ],
+      "shaBefore": "935e79dd05fef47503c6b1b230c02380284f03dec0b2be98f71d8a60393ccb99",
+      "shaAfter": "f7a720f8c92585ecbe3eee41eb3c07dbcf2ce492164090b7e3a2ac83dc844f40",
+      "bytesBefore": 8961,
+      "bytesAfter": 8991
+    },
+    {
+      "path": "node_modules/@deepseek-ai/dsh-sandbox/lib/index.js",
+      "feature": "escalation arguments seam (validated call arguments reach approval requesters)",
+      "edits": [
+        {
+          "find": "\t\treason: `escalate sandbox to ${mode}: ${justification}`,\n\t\t...approval.signal ? { signal: approval.signal } : {}",
+          "replace": "\t\treason: `escalate sandbox to ${mode}: ${justification}`,\n\t\t...approval.arguments !== void 0 ? { arguments: approval.arguments } : {},\n\t\t...approval.signal ? { signal: approval.signal } : {}"
+        }
+      ],
+      "shaBefore": "63ee2a10873a336162acd9a0d7da7f5f3dc59d072456a0b5271da277565e324f",
+      "shaAfter": "ddb3b81fd11e03bcf738425821a399e4c6c129b1de5aa0af65addedf0a5f956b",
+      "bytesBefore": 10707,
+      "bytesAfter": 10784
+    },
+    {
+      "path": "node_modules/@deepseek-ai/dsh-tool-pwsh/lib/index.js",
+      "feature": "escalation arguments seam (validated call arguments reach approval requesters)",
+      "edits": [
+        {
+          "find": "const approvePwshEscalation = (mode, justification, exec, standingPolicy) => {",
+          "replace": "const approvePwshEscalation = (mode, justification, exec, standingPolicy, callArguments) => {"
+        },
+        {
+          "find": "\t\t\tcallId: exec.callId,\n\t\t\ttoolName: \"pwsh\",\n\t\t\tsignal: exec.signal\n\t\t});",
+          "replace": "\t\t\tcallId: exec.callId,\n\t\t\ttoolName: \"pwsh\",\n\t\t\targuments: callArguments,\n\t\t\tsignal: exec.signal\n\t\t});"
+        },
+        {
+          "find": "await approvePwshEscalation(args.sandbox_permissions, args.justification, exec, standingPolicy)",
+          "replace": "await approvePwshEscalation(args.sandbox_permissions, args.justification, exec, standingPolicy, args)"
+        }
+      ],
+      "shaBefore": "75612e8ec2e8fe18bdb8b4d026b113e3017845e85385db1277ec41e08137a920",
+      "shaAfter": "f48ca7ade9737d176df0880bc31757fa1765e240695dc66560fd6e35e524e388",
+      "bytesBefore": 20459,
+      "bytesAfter": 20509
+    },
+    {
+      "path": "node_modules/@deepseek-ai/dsh-tool-bash/lib/index.js",
+      "feature": "escalation arguments seam (validated call arguments reach approval requesters)",
+      "edits": [
+        {
+          "find": "const approveBashEscalation = (mode, justification, exec, standingPolicy) => {",
+          "replace": "const approveBashEscalation = (mode, justification, exec, standingPolicy, callArguments) => {"
+        },
+        {
+          "find": "\t\t\tcallId: exec.callId,\n\t\t\ttoolName: \"bash\",\n\t\t\tsignal: exec.signal\n\t\t});",
+          "replace": "\t\t\tcallId: exec.callId,\n\t\t\ttoolName: \"bash\",\n\t\t\targuments: callArguments,\n\t\t\tsignal: exec.signal\n\t\t});"
+        },
+        {
+          "find": "await approveBashEscalation(args.sandbox_permissions, args.justification, exec, standingPolicy)",
+          "replace": "await approveBashEscalation(args.sandbox_permissions, args.justification, exec, standingPolicy, args)"
+        }
+      ],
+      "shaBefore": "2ee3eebe0e22ba0bab055edafea0e8907b7ce63b6b8d803d0853a60375a04371",
+      "shaAfter": "ceb192648af3aee628af2bc9670228db5a9f471520e095bf152cfdbcaf77e04d",
+      "bytesBefore": 18687,
+      "bytesAfter": 18737
+    },
+    {
+      "path": "node_modules/@deepseek-ai/dsh-tool-fs/lib/index.js",
+      "feature": "escalation arguments seam (validated call arguments reach approval requesters)",
+      "edits": [
+        {
+          "find": "\t\t\tcallId: exec.callId,\n\t\t\ttoolName,\n\t\t\tsignal: exec.signal\n\t\t});",
+          "replace": "\t\t\tcallId: exec.callId,\n\t\t\ttoolName,\n\t\t\targuments: args,\n\t\t\tsignal: exec.signal\n\t\t});"
+        }
+      ],
+      "shaBefore": "0e7c5cd0d16b8072d8cc1cbe99cc44275ce0b8c72f163bca04808b8c208f334f",
+      "shaAfter": "a2f81efc6ddcaf68788ec746ad47dc84f315ce3a9c25cc42ea9e1339df285faa",
+      "bytesBefore": 46285,
+      "bytesAfter": 46305
+    }
+  ]
+}

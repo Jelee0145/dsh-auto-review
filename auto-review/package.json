@@ -1,0 +1,40 @@
+{
+  "name": "dsh-auto-review",
+  "version": "0.1.0-beta.1",
+  "description": "Codex-style automated approval review for DeepSeek Harness: an isolated reviewer subagent decides sandbox escalations by intrinsic risk and user authorization, with a configurable circuit breaker, a same-operation denial fuse, and fail-closed behavior when the isolate capability is unavailable.",
+  "type": "module",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "src",
+    "README.md"
+  ],
+  "dependencies": {
+    "@deepseek-ai/schemastery": "^3.18.1"
+  },
+  "engines": {
+    "node": ">=22.19 || >=24"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "sandbox",
+    "approval",
+    "auto-review",
+    "agent"
+  ]
+}

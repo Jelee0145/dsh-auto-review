@@ -1,0 +1,7 @@
+{
+  "name": "dsh-ar-mock-llm",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "lib/index.mjs"
+}

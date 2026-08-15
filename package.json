@@ -1,0 +1,16 @@
+{
+  "name": "dsh-auto-review-repo",
+  "version": "0.1.0-beta.1",
+  "private": true,
+  "type": "module",
+  "description": "Community Beta of DSH Auto-Review: automated approval review for DeepSeek Harness sandbox escalations, plus the isolate compatibility patch for DSH 0.1.0-rc.6.",
+  "license": "MIT",
+  "scripts": {
+    "install:dsh": "node scripts/install.mjs",
+    "uninstall:dsh": "node scripts/uninstall.mjs",
+    "doctor": "node scripts/doctor.mjs"
+  },
+  "engines": {
+    "node": ">=22.19 || >=24"
+  }
+}

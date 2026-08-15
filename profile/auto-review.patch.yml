@@ -1,0 +1,33 @@
+# Reference copy of the profile entries the installer manages. The installer
+# writes this block into <DSH_HOME>/profiles/<profile>/cordis.patch.yml
+# automatically; keep this file for manual --patch use or review only.
+#
+# The permission presets table must be restated with the auto-review row:
+# permission-presets validates that the composed sandbox + approval defaults
+# match a preset, and DSH 0.1.0-rc.6 ships no auto-review row.
+- id: approval
+  config:
+    policy: auto-review
+- id: permission
+  config:
+    presets:
+      workspace-write:
+        sandbox: workspace-write
+        approval: ask
+        name: workspace-write
+        description: Write inside the workspace and permitted temporary directories; wider retries require approval.
+      danger-full-access:
+        sandbox: danger-full-access
+        approval: never
+        name: danger-full-access
+        description: Full file access without approval prompts.
+      auto-review:
+        sandbox: workspace-write
+        approval: auto-review
+        name: auto-review
+        description: Write inside the workspace; wider retries are decided by an automated reviewer instead of a human.
+- insert:
+    - id: auto-review
+      name: dsh-auto-review
+      config:
+        answerTools: ['bash', 'pwsh', 'write', 'edit']
