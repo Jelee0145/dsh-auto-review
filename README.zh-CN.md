@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e3a68a64-709c-481b-8d4c-4cbb2ada155b" /># DSH Auto-Review
+# DSH Auto-Review
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
