@@ -83,12 +83,12 @@ dsh web
 
 把下面这段直接复制给任意 coding agent（Codex、Claude Code、DSH agent 等）：
 
-> 请按照这个仓库的 README 安装 DSH Auto-Review。先检查我当前安装的 DSH 版本是否受支持，再使用仓库提供的安装脚本应用所需的 isolate compatibility patch 并安装 Auto-Review。不要修改 README 未要求的其他 DSH 代码，不要使用弱化的隔离 fallback。安装完成后运行项目提供的 doctor/验证步骤，并告诉我实际修改了哪些文件以及验证结果。如果版本或文件校验不匹配，请停止并告诉我原因，不要强行 patch。
+> 请阅读 https://github.com/Jelee0145/dsh-auto-review/edit/main/README.zh-CN.md 安装 DSH Auto-Review。先检查我当前安装的 DSH 版本是否受支持，再使用仓库提供的安装脚本应用所需的 isolate compatibility patch 并安装 Auto-Review。不要修改 README 未要求的其他 DSH 代码，不要使用弱化的隔离 fallback。安装完成后运行项目提供的 doctor/验证步骤，并告诉我实际修改了哪些文件以及验证结果。如果版本或文件校验不匹配，请停止并告诉我原因，不要强行 patch。
 
 <details>
 <summary>English（语义一致）</summary>
 
-> Follow this repository's README to install DSH Auto-Review. First check whether my installed DSH version is supported, then use the repository's installer to apply the required isolate compatibility patch and install Auto-Review. Do not modify DSH code beyond what the README requires, and do not use a weakened isolation fallback. After installing, run the project's doctor/verification steps and tell me which files were actually modified and what the results were. If the version or file checks do not match, stop and tell me why — do not force the patch.
+> Follow https://github.com/Jelee0145/dsh-auto-review/edit/main/README.zh-CN.md to install DSH Auto-Review. First check whether my installed DSH version is supported, then use the repository's installer to apply the required isolate compatibility patch and install Auto-Review. Do not modify DSH code beyond what the README requires, and do not use a weakened isolation fallback. After installing, run the project's doctor/verification steps and tell me which files were actually modified and what the results were. If the version or file checks do not match, stop and tell me why — do not force the patch.
 
 </details>
 
@@ -122,7 +122,6 @@ node scripts/uninstall.mjs
 
 - **Auto-Review 只审核真正进入提权缝的操作**，不能替代 DSH 底层沙箱。特别地，在 Windows ACL 沙箱下，受限子进程可以删除调用用户本身可删除的已存在文件（经文件上的 `DELETE` 或父目录上的 `FILE_DELETE_CHILD`），这类操作不产生提权请求——Auto-Review 根本看不到。这是 DSH 既有的沙箱边界，而非 Auto-Review 缺陷。
 - **审查者继承父工作目录。** `isolate` 能力移除了父 preset（工具、system-prompt 段落、对话历史），但审查子 agent 仍以父的 `cwd` 运行，宿主的工作区指令注入（如 `AGENTS.md`）仍会到达它。这是开发者上下文（非权限、非隐藏状态泄漏）；要做到 cwd 中立需要进一步的 DSH 能力，已延后。
-- **本仓库的验证使用了脚本化 mock 模型。** 无 API key 下经 `verify/mock-llm` 端到端跑通了真实的 low-risk allow 与 high-risk deny；本环境**未**对真实 DeepSeek 模型复验。
 - **Linux/macOS 未测试。** 完整 安装→allow/deny→卸载 流程只在 Windows 上验证过。
 - **无判定缓存**——相同 ask 每次都重新审查。
 - **敏感读取不在范围内**——读取工作区外文件可能根本不经过提权请求。
